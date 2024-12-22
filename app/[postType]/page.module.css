@@ -4,15 +4,15 @@
   gap: 1.5rem;
 }
 
-/* PostPartList*/
 .postPartList {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
 }
 
-.postPartList h2 {
-  margin: 0;
-  font-weight: 700;
-  font-size: 1.2rem;
+.description {
+  margin-top: -1.2rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #666;
 }

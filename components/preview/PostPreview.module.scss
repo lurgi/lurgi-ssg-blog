@@ -1,0 +1,37 @@
+.preview {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+
+  & > a {
+    width: 75%;
+  }
+}
+
+@media (min-width: 450px) {
+  .detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.author {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.date {
+  color: #666;
+  font-size: 1rem;
+  width: 20%;
+}

@@ -1,0 +1,42 @@
+@media (min-width: 1024px) {
+  .aside {
+    position: fixed;
+    transform: translateX(-28rem);
+  }
+}
+
+.aside {
+  margin-top: 1rem;
+  width: 10rem;
+}
+
+.aside ul {
+  list-style: none;
+  padding: 0;
+}
+
+.aside li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.link-text-highlight {
+  font-weight: 600;
+}
+
+/* HyperLink */
+.hyper-link-container {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hyper-link {
+  opacity: 0.75;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.99;
+  }
+}
