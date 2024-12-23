@@ -1,4 +1,5 @@
 import CustomMDX from "@/components/MDXComponents/CustomMDX";
+import Giscus from "@/components/customGiscus/CustomGiscus";
 import styles from "./page.module.css";
 
 export default async function PostDetailPage({
@@ -15,8 +16,7 @@ export default async function PostDetailPage({
         <CustomMDX postFileName={postFileName} postType={postType} />
       </div>
 
-      {/* TODO: Giscus React19 지원시 */
-      /* <CustomGiscus /> */}
+      <Giscus postFileName={postFileName} />
     </div>
   );
 }
