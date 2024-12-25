@@ -4,6 +4,7 @@ import type { NextConfig } from "next";
 const withTM = require("next-transpile-modules")(["react-syntax-highlighter"]);
 
 const nextConfig: NextConfig = {
+  output: "export",
   reactStrictMode: true,
   experimental: {
     mdxRs: true,
