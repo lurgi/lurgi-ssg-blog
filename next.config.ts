@@ -6,7 +6,6 @@ const withTM = require("next-transpile-modules")(["react-syntax-highlighter"]);
 const nextConfig: NextConfig = {
   output: "export",
   reactStrictMode: true,
-  swcMinify: false,
   experimental: {
     mdxRs: true,
     turbo: {
