@@ -4,14 +4,14 @@ import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { GetStaticProps } from "next";
 
-import fs from "fs";
-import path from "path";
-
 import { posts } from "@/src/data";
 import Giscus from "@/components/customGiscus/CustomGiscus";
 import FancyLink from "@/components/MDXComponents/FancyLink/FancyLink";
 import FancyCode from "@/components/MDXComponents/FancyCode/FancyCode";
 import FancyImage from "@/components/MDXComponents/FancyImage/FancyImage";
+
+import fs from "fs";
+import path from "path";
 
 interface PostProps {
   mdxSource: MDXRemoteSerializeResult;
