@@ -1,8 +1,8 @@
-import styles from "./styles.module.css";
+import styles from "@/styles/PostDetailPage.module.css";
 
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetStaticProps } from "next";
 
 import fs from "fs";
 import path from "path";
@@ -16,6 +16,7 @@ import FancyImage from "@/components/MDXComponents/FancyImage/FancyImage";
 interface PostProps {
   mdxSource: MDXRemoteSerializeResult;
   postFileName: string;
+  postType: PostType;
 }
 
 export default function PostDetailPage({ mdxSource, postFileName }: PostProps) {
@@ -36,7 +37,7 @@ export default function PostDetailPage({ mdxSource, postFileName }: PostProps) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export function getStaticPaths() {
   const paths = Object.keys(posts).flatMap((postType) =>
     posts[postType as keyof typeof posts].contents.map((content) => ({
       params: { postType, postFileName: content.fileName },
@@ -47,17 +48,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths,
     fallback: false,
   };
-};
+}
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export async function getStaticProps(context: Parameters<GetStaticProps>[0]) {
   const { postType, postFileName } = context.params as { postType: string; postFileName: string };
+
+  if (!postType || !postFileName) {
+    return { notFound: true };
+  }
 
   const filePath = path.join(process.cwd(), "src", "statics", postType, `${postFileName}.mdx`);
   const fileContents = fs.readFileSync(filePath, "utf-8");
 
+  if (!fileContents) {
+    return { notFound: true };
+  }
+
   const mdxSource = await serialize(fileContents);
 
   return {
-    props: { mdxSource, postFileName },
+    props: { mdxSource, postFileName, postType },
   };
-};
+}

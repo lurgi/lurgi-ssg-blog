@@ -1,20 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 import styles from "./PhotoList.module.css";
-import { QueryErrorResetBoundary, useSuspenseQueries, useSuspenseQuery } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  QueryErrorResetBoundary,
+  useSuspenseQueries,
+  useSuspenseQuery,
+} from "@tanstack/react-query";
 import { getMediaDetail, getMediaIds } from "@/src/api/instagram";
 import { Suspense } from "react";
 
 import Bat from "../loadingBat/Bat";
 import { MdErrorOutline } from "react-icons/md";
 import { ErrorBoundary } from "react-error-boundary";
-import QueryProvider from "../_providers/QueryProvider";
 
 export default function PhotoList() {
   return (
     <div className={styles.photoPartList}>
       <h2>Photos</h2>
 
-      <QueryProvider>
+      <QueryClientProvider client={new QueryClient()}>
         <QueryErrorResetBoundary>
           {({ reset }) => (
             <ErrorBoundary
@@ -42,7 +47,7 @@ export default function PhotoList() {
             </ErrorBoundary>
           )}
         </QueryErrorResetBoundary>
-      </QueryProvider>
+      </QueryClientProvider>
     </div>
   );
 }

@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { NextConfig } from "next";
 
+const withTM = require("next-transpile-modules")(["react-syntax-highlighter"]);
+
 const nextConfig: NextConfig = {
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  reactStrictMode: true,
   experimental: {
+    mdxRs: true,
     turbo: {
       rules: {
         "*.svg": {
@@ -12,6 +16,21 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: [
+        {
+          loader: "@svgr/webpack",
+          options: {
+            icon: true,
+          },
+        },
+      ],
+    });
+
+    return config;
+  },
 };
 
-export default nextConfig;
+export default withTM(nextConfig);

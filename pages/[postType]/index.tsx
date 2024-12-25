@@ -1,13 +1,11 @@
-import styles from "./styles.module.css";
-import { posts } from "@/src/data";
+import styles from "@/styles/PostListPage.module.css";
 import PostPreview from "@/components/preview/PostPreview";
-import { notFound } from "next/navigation";
-import { GetStaticPaths, GetStaticProps } from "next";
+
+import { posts } from "@/src/data";
+import { GetStaticProps } from "next";
 
 export default function PostListPage({ postType }: { postType: PostType }) {
   const postData = posts[postType];
-
-  if (!postType) notFound();
 
   return (
     <div className={styles.postPartList}>
@@ -24,8 +22,8 @@ export default function PostListPage({ postType }: { postType: PostType }) {
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = Object.keys(posts).map((postType) => ({
+export async function getStaticPaths() {
+  const paths = (Object.keys(posts) as PostType[]).map((postType) => ({
     params: { postType },
   }));
 
@@ -33,16 +31,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths,
     fallback: false,
   };
-};
+}
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { postType } = context.params as { postType: PostType };
+export async function getStaticProps(context: Parameters<GetStaticProps>[0]) {
+  const postType = context.params?.postType as PostType;
 
-  if (!posts[postType]) {
+  if (!postType || !Object.keys(posts).includes(postType)) {
     return { notFound: true };
   }
 
   return {
     props: { postType },
   };
-};
+}
