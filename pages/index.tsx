@@ -1,26 +1,14 @@
-import styles from "./page.module.css";
+import styles from "@/styles/PostPartList.module.css";
 import Introduce from "@/components/introduce/Introduce";
 import PhotoList from "@/components/photoList/PhotoList";
 import PostPreview from "@/components/preview/PostPreview";
+
 import { posts, postTypes } from "@/src/data";
 import Link from "next/link";
 
 interface PostListPart {
   type: PostType;
   posts: PostPreview[];
-}
-
-function PostPartList({ type, posts }: PostListPart) {
-  return (
-    <div className={styles.postPartList}>
-      <Link href={`/${type}`}>
-        <h2>{type}</h2>
-      </Link>
-      {posts.map((post) => (
-        <PostPreview url={`/${post.type}/${post.fileName}`} key={post.fileName} post={post} />
-      ))}
-    </div>
-  );
 }
 
 export default function Home() {
@@ -36,5 +24,18 @@ export default function Home() {
         <PhotoList />
       </div>
     </>
+  );
+}
+
+function PostPartList({ type, posts }: PostListPart) {
+  return (
+    <div className={styles.postPartList}>
+      <Link href={`/${type}`}>
+        <h2>{type}</h2>
+      </Link>
+      {posts.map((post) => (
+        <PostPreview url={`/${post.type}/${post.fileName}`} key={post.fileName} post={post} />
+      ))}
+    </div>
   );
 }

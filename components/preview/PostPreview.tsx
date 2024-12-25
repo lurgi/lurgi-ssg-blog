@@ -1,5 +1,3 @@
-"use client";
-
 import useIsMobile from "@/src/hooks/useIsMobile";
 import styles from "./PostPreview.module.scss";
 

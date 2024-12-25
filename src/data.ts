@@ -1,6 +1,6 @@
 import DEVELOPMENT from "@/src/statics/Development/_data";
 import INSIGHTS from "@/src/statics/Insights/_data";
-import READING from "./statics/Reading/_data";
+import READING from "@/src/statics/Reading/_data";
 
 interface Post {
   description: string;

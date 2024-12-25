@@ -1,13 +1,10 @@
-"use client";
-
 import styles from "./Aside.module.scss";
 import LinkedInIcon from "@/public/linkedin.svg";
 import GithubIcon from "@/public/github.svg";
 
-import { useParams, usePathname } from "next/navigation";
 import Link from "next/link";
-
 import { postTypes } from "@/src/data";
+import { useRouter } from "next/router";
 
 const LINK = {
   github: {
@@ -23,8 +20,9 @@ const LINK = {
 const LINK_TYPES = Object.keys(LINK) as (keyof typeof LINK)[];
 
 export default function Aside() {
-  const pathname = usePathname();
-  const { postType } = useParams() as { postType: string };
+  const router = useRouter();
+  const pathname = router.pathname;
+  const postType = router.query.postType as string | undefined;
 
   return (
     <aside className={styles.aside}>

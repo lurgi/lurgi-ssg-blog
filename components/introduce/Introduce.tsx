@@ -1,6 +1,6 @@
 import styles from "./Introduce.module.scss";
 
-import Bat from "../loading/bat/Bat";
+import Bat from "../loadingBat/Bat";
 
 export default function Introduce() {
   return (
