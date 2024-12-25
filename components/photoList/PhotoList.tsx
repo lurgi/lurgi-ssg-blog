@@ -1,6 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
-
 import styles from "./PhotoList.module.css";
 import { QueryErrorResetBoundary, useSuspenseQueries, useSuspenseQuery } from "@tanstack/react-query";
 import { getMediaDetail, getMediaIds } from "@/src/api/instagram";

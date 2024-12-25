@@ -1,4 +1,3 @@
-"use client";
 import { useEffect, useRef } from "react";
 
 export default function Giscus({ postFileName }: { postFileName: string }) {

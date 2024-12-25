@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from "./styles.module.css";
 import Introduce from "@/components/introduce/Introduce";
 import PhotoList from "@/components/photoList/PhotoList";
 import PostPreview from "@/components/preview/PostPreview";

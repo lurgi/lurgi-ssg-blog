@@ -1,5 +1,3 @@
-"use client";
-
 import styles from "./Aside.module.scss";
 import LinkedInIcon from "@/public/linkedin.svg";
 import GithubIcon from "@/public/github.svg";
@@ -24,7 +22,7 @@ const LINK_TYPES = Object.keys(LINK) as (keyof typeof LINK)[];
 
 export default function Aside() {
   const pathname = usePathname();
-  const { postType } = useParams() as { postType: string };
+  const params = useParams() as { postType: string };
 
   return (
     <aside className={styles.aside}>
@@ -38,7 +36,7 @@ export default function Aside() {
           {postTypes.map((type) => (
             <li key={type}>
               <Link href={`/${type}`}>
-                <p className={postType === type ? styles["link-text-highlight"] : undefined}>{type}</p>
+                <p className={params?.postType === type ? styles["link-text-highlight"] : undefined}>{type}</p>
               </Link>
             </li>
           ))}
