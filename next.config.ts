@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
+  basePath: "/lurgi-ssg-blog",
+  assetPrefix: "/lurgi-ssg-blog/",
   reactStrictMode: true,
   transpilePackages: ["react-syntax-highlighter"],
   experimental: {
