@@ -1,11 +1,10 @@
 /* eslint-disable @typescript-eslint/no-require-imports */
 import type { NextConfig } from "next";
 
-const withTM = require("next-transpile-modules")(["react-syntax-highlighter"]);
-
 const nextConfig: NextConfig = {
   output: "export",
   reactStrictMode: true,
+  transpilePackages: ["react-syntax-highlighter"],
   experimental: {
     mdxRs: true,
     turbo: {
@@ -34,4 +33,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default withTM(nextConfig);
+export default nextConfig;
